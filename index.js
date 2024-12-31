@@ -4,7 +4,8 @@ const openai = new OpenAI({
   dangerouslyAllowBrowser: true,
 });
 
-const imgURL = "https://scrimba.com/links/menu-image";
+const imgURL = "https://scrimba.com/links/cheese-1-img";
+const imgURL2 = "https://scrimba.com/links/cheese-2-img";
 
 const response = await openai.chat.completions.create({
   model: "gpt-4o-mini-2024-07-18",
@@ -12,11 +13,17 @@ const response = await openai.chat.completions.create({
     {
       role: "user",
       content: [
-        { type: "text", text: "I want to order one of each item on this menu for my company party. How much would that cost?" },
+        { type: "text", text: "What's the difference between these two types of cheese?" },
         {
           type: "image_url",
           image_url: {
             url: imgURL
+          }
+        },
+        {
+          type: "image_url",
+          image_url: {
+            url: imgURL2
           }
         }
       ]
@@ -25,4 +32,7 @@ const response = await openai.chat.completions.create({
 });
 console.log(response.choices[0]);
 
-document.body.innerHTML = `<img src="${imgURL}" alt="Image to analyze">`;
+document.body.innerHTML = `
+  <img src="${imgURL}" alt="Cheese">
+  <img src="${imgURL2}" alt="Cheese">
+`;
