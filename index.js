@@ -4,7 +4,7 @@ const openai = new OpenAI({
   dangerouslyAllowBrowser: true,
 });
 
-const imgURL = "https://scrimba.com/links/egg-image";
+const imgURL = "https://scrimba.com/links/menu-image";
 
 const response = await openai.chat.completions.create({
   model: "gpt-4o-mini-2024-07-18",
@@ -12,7 +12,7 @@ const response = await openai.chat.completions.create({
     {
       role: "user",
       content: [
-        { type: "text", text: "I found this small egg on the ground in South Florida during spring. What type of bird could it be from?" },
+        { type: "text", text: "I want to order one of each item on this menu for my company party. How much would that cost?" },
         {
           type: "image_url",
           image_url: {
